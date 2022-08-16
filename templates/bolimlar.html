@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odiljonov Asadullohning shaxsiy blogi</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="light-theme">
+
+  <!--
+    - #HEADER
+  -->
+
+  <header>
+
+    <div class="container">
+
+      <nav class="navbar">
+
+        {% for l in logo %}
+        <a href="#">
+          <img src="{{l.rasm_light.url}}" alt="Devblog's logo" width="150" height="40" class="logo-light">
+          <img src="{{l.rasm_dark.url}}" alt="Devblog's logo" width="150" height="40" class="logo-dark">
+        </a>
+        {% endfor %}
+        <div class="btn-group">
+
+          <button class="theme-btn theme-btn-mobile light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button>
+
+          <button class="nav-menu-btn">
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="flex-wrapper">
+
+          <ul class="desktop-nav">
+
+            <li>
+              <a href="{% url 'index' %}" class="nav-link">Asosiy</a>
+            </li>
+
+            <!-- <li>
+              <a href="#" class="nav-link">About Me</a>
+            </li> -->
+
+            <li>
+              <a href="https://accounts.google.com/SignOutOptions?hl=ru&continue=https://www.google.com%3Fhl%3Dru" class="nav-link">Bog'lanish</a>
+            </li>
+
+          </ul>
+
+          <button class="theme-btn theme-btn-desktop light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="mobile-nav">
+
+          <button class="nav-close-btn">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="wrapper">
+
+            <p class="h3 nav-title">Main Menu</p>
+
+            <ul>
+              <li class="nav-item">
+                <a href="{%  url 'index' %}" class="nav-link">Asosiy</a>
+              </li>
+
+              <!-- <li class="nav-item">
+                <a href="#" class="nav-link">About Me</a>
+              </li> -->
+
+              <li class="nav-item">
+                <a href="https://t.me/Pythonchi_UZB" class="nav-link">Bog'lanish</a>
+              </li>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+
+
+  <main>
+
+    <!--
+      - #HERO SECTION
+    -->
+
+    <div class="hero">
+
+      <div class="container">
+
+        <div class="left">
+
+          <h1 class="h1">
+            Assalomu alaykum, Men ismim <b>Odiljonov Asadulloh</b>.
+            <br>Pythoner
+          </h1>
+
+
+
+        </div>
+
+        <!-- <div class="right">
+
+          <div class="pattern-bg"></div>
+          <div class="img-box">
+            <img src="./static/images/hero.png" alt="Julia Walker" class="hero-img">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+          </div>
+
+        </div> -->
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="main">
+
+      <div class="container">
+
+        <!--
+          - BLOG SECTION
+        -->
+
+        <div class="blog">
+
+          <h2 class="h2">
+            Eng so'nggi blog posti</h2>
+
+          <div class="blog-card-group">
+            <div class="blog-card">
+              {% for h in filtr %}
+                <div class="blog-card-banner">
+                  <img src="{{h.rasm.url }}" alt="Building microservices with Dropwizard, MongoDB & Docker"
+                    width="250" class="blog-banner-img">
+                </div>
+                <div class="blog-content-wrapper">
+                  <button class="blog-topic text-tiny">{{h.bolimlar}}</button>
+                  <h3>
+                    <a href="#" class="h3">{{h.nom}}</a>
+                  </h3>
+                  <p class="blog-text">{{h.matn}}</p>
+                  <div class="wrapper-flex">
+                    <div class="profile-wrapper">
+                      <img src="{{h.aftor.url}}" alt="Julia Walker" width="50">
+                    </div>
+                    <div class="wrapper">
+                      <a href="#" class="h4">{{h.ism}}</a>
+                      <p class="text-sm">
+                        <time datetime="2022-01-17">{{h.sana}}</time>
+                        <span class="separator"></span>
+                        <ion-icon name="time-outline"></ion-icon>
+                        <time datetime="PT3M">{{h.vaqt}}</time>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              {% endfor %}
+            </div>
+          </div>
+<!--          <center><a href="{% url 'index' %}" class="btn load-more">Load More</a></center>-->
+        </div>
+
+
+
+
+
+        <!--
+          - ASIDE
+        -->
+
+        <div class="aside">
+
+          <div class="topics">
+            <h2 class="h2">
+            <form action="{% url 'post' %}" method="post">
+              {% csrf_token %}
+              <input type="text" placeholder="Qidiruv..." name="qidiruv" width="100">
+              <button type="submit" class="btn btn-primary" >Qidirish</button>
+            </form></h2>
+            <h2 class="h2">Mavzular</h2>
+            {% for u in bolim %}
+            <a href="{% url 'bolimlar' u.id %}" name="" class="topic-btn active">
+              <div class="icon-box">
+                <ion-icon name="{{u.icon}}"></ion-icon>
+              </div>
+
+              <p>{{u.nom}}</p>
+            </a>
+            {% endfor %}
+
+
+          </div>
+
+<!--          <div class="tags">-->
+
+<!--            <h2 class="h2">Teglar</h2>-->
+
+<!--            <div class="wrapper">-->
+
+<!--              <button class="hashtag active">#mongodb</button>-->
+<!--              <button class="hashtag">#nodejs</button>-->
+<!--              <button class="hashtag">#a11y</button>-->
+<!--              <button class="hashtag">#mobility</button>-->
+<!--              <button class="hashtag">#inclusion</button>-->
+<!--              <button class="hashtag">#webperf</button>-->
+<!--              <button class="hashtag">#optimize</button>-->
+<!--              <button class="hashtag">#performance</button>-->
+
+<!--            </div>-->
+
+<!--          </div>-->
+
+          <div class="contact">
+
+            <h2 class="h2">Suhbatlashamiz</h2>
+
+            <div class="wrapper">
+
+              <p>
+               Sizga yordam berishimni hohlaysizmi ? Keling, suhbat quraylik.
+              </p>
+
+
+              <ul class="social-link">
+
+                <li>
+                  <a href="https://t.me/Pythonchi_UZB" class="icon-box telegram">
+                    <img src="{% static 'images/tg.jpg' %}" width="30">
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://www.instagram.com/hamdamovic._7064/" class="icon-box twitter">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://www.facebook.com/profile.php?id=100083362957262" class="icon-box facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+
+
+
+  <!--
+    - #FOOTER
+  -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="wrapper">
+
+        {% for l in logo %}
+        <a href="#">
+          <img src="{{l.rasm_light.url}}" alt="Devblog's logo" width="150" height="40" class="logo-light">
+          <img src="{{l.rasm_dark.url}}" alt="Devblog's logo" width="150" height="40" class="logo-dark">
+        </a>
+        {% endfor %}
+
+        <p class="footer-text">
+           Bu sayt orqali foydali malumotlar olasiz degan umiddaman
+        </p>
+
+      </div>
+
+
+
+    </div>
+
+    <p class="copyright">
+      &copy; Website 2022 <a href="#">MayoqHub</a>
+    </p>
+
+  </footer>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="{% static 'js/script.min.js' %}"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
